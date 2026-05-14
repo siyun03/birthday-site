@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Birthday Ko Bong Su</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0a1428;
+    color:#f0e6d2;
+    font-family:'Pretendard', sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+.section{
+    width:100%;
+    padding:120px 10%;
+    position:relative;
+}
+
+.section-title{
+    font-family:'Cinzel', serif;
+    font-size:64px;
+    color:#c8aa6e;
+    margin-bottom:70px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* 영상 배경 */
+.hero video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:
+    brightness(.28)
+    contrast(1.1);
+
+    transform:scale(1.08);
+
+    animation:slowZoom 15s ease forwards;
+}
+
+@keyframes slowZoom{
+    from{
+        transform:scale(1.15);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+
+/* 어두운 오버레이 */
+.hero::before{
+    content:'';
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(5,7,13,1),
+    rgba(5,7,13,.2)
+    );
+
+    z-index:2;
+}
+
+/* 골드 글로우 */
+.hero::after{
+    content:'';
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    background:
+    radial-gradient(circle,
+    rgba(200,170,110,.18),
+    transparent 70%);
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    filter:blur(120px);
+
+    z-index:1;
+}
+
+/* HERO CONTENT */
+.hero-content{
+    position:absolute;
+    left:8%;
+    bottom:12%;
+    z-index:5;
+    max-width:900px;
+}
+
+.hero-small{
+    font-size:18px;
+    letter-spacing:6px;
+    color:#c8aa6e;
+    margin-bottom:24px;
+}
+
+.hero-title{
+    font-family:'Cinzel', serif;
+    font-size:120px;
+    line-height:.95;
+    font-weight:700;
+
+    text-shadow:
+    0 0 20px rgba(200,170,110,.2),
+    0 0 60px rgba(200,170,110,.08);
+}
+
+.hero-desc{
+    margin-top:30px;
+
+    font-size:22px;
+    line-height:1.8;
+
+    max-width:700px;
+
+    color:#d3c7b0;
+}
+
+/* SCROLL */
+.scroll-text{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+
+    z-index:5;
+
+    color:#c8aa6e;
+    letter-spacing:3px;
+    font-size:13px;
+
+    animation:float 2s infinite;
+}
+
+@keyframes float{
+    0%{transform:translate(-50%,0);}
+    50%{transform:translate(-50%,10px);}
+    100%{transform:translate(-50%,0);}
+}
+
+/* =========================
+   OVERVIEW
+========================= */
+
+.overview{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.overview-image{
+    position:relative;
+}
+
+.overview-image img{
+    width:100%;
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 0 40px rgba(200,170,110,.1);
+}
+
+.overview-card{
+    background:
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.02)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:50px;
+    border-radius:24px;
+
+    backdrop-filter:blur(12px);
+}
+
+.overview-item{
+    margin-bottom:35px;
+}
+
+.overview-label{
+    font-size:13px;
+    color:#c8aa6e;
+    letter-spacing:3px;
+    margin-bottom:10px;
+}
+
+.overview-value{
+    font-size:32px;
+    color:#f0e6d2;
+}
+
+/* =========================
+   ABILITIES
+========================= */
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:30px;
+}
+
+.skill-card{
+    background:
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.015)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:35px;
+    border-radius:22px;
+
+    transition:.4s;
+}
+
+.skill-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 0 40px rgba(200,170,110,.12);
+}
+
+.skill-icon{
+    width:72px;
+    height:72px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+    margin-bottom:25px;
+
+    border:1px solid rgba(200,170,110,.4);
+}
+
+.skill-name{
+    font-family:'Cinzel', serif;
+    color:#c8aa6e;
+    font-size:26px;
+    margin-bottom:15px;
+}
+
+.skill-desc{
+    line-height:1.8;
+    color:#d3d3d3;
+}
+
+/* =========================
+   STORY
+========================= */
+
+.story{
+    max-width:950px;
+    margin:auto;
+
+    font-size:22px;
+    line-height:2.2;
+
+    color:#e3e3e3;
+
+    white-space:pre-line;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+}
+
+.gallery img{
+    width:100%;
+    height:380px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    transition:.45s;
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.gallery img:hover{
+    transform:scale(1.03) translateY(-8px);
+
+    box-shadow:
+    0 0 45px rgba(200,170,110,.18);
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-card{
+
+    max-width:1000px;
+    margin:auto;
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.015)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:70px;
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+    0 0 50px rgba(200,170,110,.12);
+}
+
+.letter-title{
+    font-family:'Cinzel', serif;
+    font-size:52px;
+    color:#c8aa6e;
+    margin-bottom:35px;
+}
+
+.letter-text{
+    font-size:22px;
+    line-height:2.3;
+
+    color:#f1f1f1;
+
+    white-space:pre-line;
+}
+
+.signature{
+    margin-top:50px;
+
+    font-size:28px;
+
+    color:#c8aa6e;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    height:320px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.footer h1{
+    font-family:'Cinzel', serif;
+    font-size:92px;
+    color:#f0e6d2;
+}
+
+.footer p{
+    margin-top:15px;
+    color:#c8aa6e;
+    letter-spacing:3px;
+}
+
+/* =========================
+   FADE
+========================= */
+
+.fade{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1.2s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .hero-title{
+        font-size:62px;
+    }
+
+    .hero-desc{
+        font-size:18px;
+    }
+
+    .overview{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:90px 7%;
+    }
+
+    .section-title{
+        font-size:42px;
+    }
+
+    .letter-card{
+        padding:38px;
+    }
+
+    .letter-text{
+        font-size:17px;
+    }
+
+    .footer h1{
+        font-size:48px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     BACKGROUND MUSIC
+========================= -->
+
+<audio autoplay loop>
+    <source src="bgm.mp3" type="audio/mp3">
+</audio>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <!-- 영상 -->
+    <video autoplay muted loop playsinline>
+        <source src="main.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content fade">
+
+        <div class="hero-small">
+            HBD
+        </div>
+
+        <div class="hero-title">
+            KO<br>BONG SU
+        </div>
+
+        <div class="hero-desc">
+            언제나 주변 사람들을 웃게 만들고,
+            평범한 순간도 특별하게 만드는 사람.
+
+            오늘은 그 사람을 위한 페이지.
+        </div>
+
+    </div>
+
+    <div class="scroll-text">
+        SCROLL TO EXPLORE
+    </div>
+
+</section>
+
+<!-- =========================
+     OVERVIEW
+========================= -->
+
+<section class="section">
+
+    <div class="section-title fade">
+        CHAMPION OVERVIEW
+    </div>
+
+    <div class="overview">
+
+        <div class="overview-image fade">
+            <img src="profile.jpg">
+        </div>
+
+        <div class="overview-card fade">
+
+            <div class="overview-item">
+                <div class="overview-label">NAME</div>
+                <div class="overview-value">ko bong su</div>
+            </div>
+
+            <div class="overview-item">
+                <div class="overview-label">POSITION</div>
+                <div class="overview-value">the seat next to me</div>
+            </div>
+
+            <div class="overview-item">
+                <div class="overview-label">SPECIALTY</div>
+                <div class="overview-value">웃음 / 다정함 / 따뜻함</div>
+            </div>
+
+            <div class="overview-item">
+                <div class="overview-label">BIRTHDAY</div>
+                <div class="overview-value">95.10.29</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     ABILITIES
+========================= -->
+
+<section class="section">
+
+    <div class="section-title fade">
+        ABILITIES
+    </div>
+
+    <div class="skills">
+
+        <div class="skill-card fade">
+
+            <img class="skill-icon" src="skill1.jpg">
+
+            <div class="skill-name">
+                PASSIVE
+            </div>
+
+            <div class="skill-desc">
+                주변 사람들을 자연스럽게 웃게 만드는 능력.
+            </div>
+
+        </div>
+
+        <div class="skill-card fade">
+
+            <img class="skill-icon" src="skill1.jpg">
+
+            <div class="skill-name">
+                Q
+            </div>
+
+            <div class="skill-desc">
+                주변 사람들을 자연스럽게 웃게 만드는 능력.
+            </div>
+
+        </div>
+
+        <div class="skill-card fade">
+
+            <img class="skill-icon" src="skill2.jpg">
+
+            <div class="skill-name">
+                W
+            </div>
+
+            <div class="skill-desc">
+                지친 하루도 편안하게 만들어주는 말 한마디.
+            </div>
+
+        </div>
+
+        <div class="skill-card fade">
+
+            <img class="skill-icon" src="skill3.jpg">
+
+            <div class="skill-name">
+                E
+            </div>
+
+            <div class="skill-desc">
+                평범한 순간도 특별하게 기억하게 만드는 능력.
+            </div>
+
+        </div>
+
+        <div class="skill-card fade">
+
+            <img class="skill-icon" src="skill4.jpg">
+
+            <div class="skill-name">
+                R
+            </div>
+
+            <div class="skill-desc">
+                사람들에게 오래 기억되는 따뜻함.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section class="section">
+
+    <div class="section-title fade">
+        BACKGROUND STORY
+    </div>
+
+    <div class="story fade">
+
+누군가는 특별한 능력으로 사람들을 놀라게 하지만,
+누군가는 존재 자체만으로 주변을 편안하게 만든다.
+
+항상 자연스럽게 사람들을 챙기고,
+작은 순간도 소중하게 기억하게 만드는 사람.
+
+밝게 웃는 모습 뒤에도
+많은 고민과 하루들이 있었겠지만,
+그럼에도 늘 따뜻했던 사람.
+
+오늘만큼은 누구보다 행복했으면 좋겠다.
+
+    </div>
+
+</section>
+
+<!-- =========================
+     MEMORIES
+========================= -->
+
+<section class="section">
+
+    <div class="section-title fade">
+        MEMORIES
+    </div>
+
+    <div class="gallery">
+
+        <img class="fade" src="photo1.jpg">
+        <img class="fade" src="photo2.jpg">
+        <img class="fade" src="photo3.jpg">
+        <img class="fade" src="photo4.jpg">
+
+    </div>
+
+</section>
+
+<!-- =========================
+     LETTER
+========================= -->
+
+<section class="section">
+
+    <div class="section-title fade">
+        LETTER
+    </div>
+
+    <div class="letter-card fade">
+
+        <div class="letter-title">
+            Happy Birthday
+        </div>
+
+        <div class="letter-text">
+
+생일 진심으로 축하해 🎂
+
+항상 고맙고,
+올해는 작년보다 더 행복한 일들만 가득했으면 좋겠어.
+
+힘든 날에도 웃을 수 있었으면 좋겠고,
+앞으로 하고 싶은 일들도 다 잘 풀렸으면 좋겠다.
+
+오늘 하루만큼은 아무 걱정 없이
+맛있는 것도 많이 먹고 행복하게 보내 😊
+
+네가 웃는 날이 더 많아졌으면 좋겠어.
+
+        </div>
+
+        <div class="signature">
+            — From. YOUR NAME
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer fade">
+
+    <h1>HAPPY BIRTHDAY</h1>
+
+    <p>
+        2026.10.29
+    </p>
+
+</footer>
+
+<script>
+
+/* =========================
+   SCROLL FADE
+========================= */
+
+const fades = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('show');
+
+        }
+
+    });
+
+},{
+    threshold:.15
+});
+
+fades.forEach(el => observer.observe(el));
+
+</script>
+
+</body>
+</html>
